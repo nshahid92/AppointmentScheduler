@@ -26,21 +26,23 @@ Unzip the folder named Appointment Scheduler. It consists of AppointmentSchedule
 
 #### Test the application
 
-1. To test the Post funtion you can hit Try it out and then execute. The json template is ready to be modified. 
+#### To test the Post funtion you can hit Try it out and then execute. The json template is ready to be modified. 
 Example Request Schema:
+```json
 {
   "userUuid": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "dateTime": "2021-05-18T14:37:40.660Z"
 }
-
+```
 Response:
 1) 200 Ok - when appointment created successfully
 2) 500 Internal Server Error - appointment cannot be created 
 
-2. To test the Get function you can hit Try it out and then execute. Pass in user uuid into the text box.
+#### To test the Get function you can hit Try it out and then execute. Pass in user uuid into the text box.
 
 Response:
 1. 200 Ok
+```json
 [
   {
     "date": "2021-05-18",
@@ -48,6 +50,7 @@ Response:
     "endTime": "15:07"
   }
 ]
+```
 
 2. 404 Not Found
 The user uuid does not exist in the system. No appointment was ever created for this user in the system
@@ -59,23 +62,23 @@ The user uuid does not exist in the system. No appointment was ever created for 
 
 1. Navigate to the folder containing Docker file. On windows open cmd and type
 
-cd Appointment Scheduler
+  > cd Appointment Scheduler
 
 2. Builder docker file
 
-docker build -t appointmentscheduler .
+  > docker build -t appointmentscheduler .
 
 3. Run docker file
 
-docker run -dp 80:80 appointmentscheduler
+  > docker run -dp 80:80 appointmentscheduler
 
 #### Test the application
 
 1. Create Appointment
 
-curl -X POST "http://localhost:80/api/Appointments" -H  "accept: */*" -H  "Content-Type: application/json" -d "{\"userUuid\":\"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\"dateTime\":\"2021-05-18T14:34:58.849Z\"}"
+  > curl -X POST "http://localhost:80/api/Appointments" -H  "accept: */*" -H  "Content-Type: application/json" -d "{\"userUuid\":\"3fa85f64-5717-4562-b3fc-   2c963f66afa6\",\"dateTime\":\"2021-05-18T14:34:58.849Z\"}"
 
 
 2. GetAppointment
-curl -X GET "http://localhost:80/api/Appointments/3fa85f64-5717-4562-b3fc-2c963f66afa6" -H  "accept: text/plain"
+  > curl -X GET "http://localhost:80/api/Appointments/3fa85f64-5717-4562-b3fc-2c963f66afa6" -H  "accept: text/plain"
 
